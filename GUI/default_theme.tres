@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://t56awu7x76pj"]
+
+[ext_resource type="StyleBox" uid="uid://bjbhm2prt1888" path="res://GUI/Button/button_focus.tres" id="1_3518f"]
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.498039, 0.498039, 0.498039, 0.615686)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/focus = ExtResource("1_3518f")

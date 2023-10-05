@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwlb7ha2paic6"]
+
+[ext_resource type="Script" path="res://Worlds/heart.gd" id="1_blm1n"]
+[ext_resource type="Texture2D" uid="uid://cnsuj0k763d1h" path="res://Worlds/heart.png" id="1_fvu3s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6pmg"]
+radius = 5.0
+
+[sub_resource type="Gradient" id="Gradient_tk16c"]
+offsets = PackedFloat32Array(0.015873, 1)
+colors = PackedColorArray(1, 1, 0.717647, 1, 1, 1, 0.807843, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5cs7t"]
+gradient = SubResource("Gradient_tk16c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xqaj0"]
+lifetime_randomness = 0.2
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_5cs7t")
+
+[node name="Heart" type="Area2D" groups=["Hearts"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_blm1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fvu3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y6pmg")
+
+[node name="Sparkling" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_xqaj0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
